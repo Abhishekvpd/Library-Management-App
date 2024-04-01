@@ -1,0 +1,12 @@
+<section class="card">
+    <div class="card__header">
+        <h5 class="card__title">{{book.title}}</h5>
+        <button type="button" class="button-secondary">{{action === "BORROW"? "Borrow +" : "Return -"}}</button>
+    </div>
+    <div class="card__details">
+        <span>{{book.author}}</span>
+        <div class="seperator"></div>
+        <span>{{book.genre}}</span>
+    </div>
+    <p class="card__description">{{book.description}}</p>
+</section>

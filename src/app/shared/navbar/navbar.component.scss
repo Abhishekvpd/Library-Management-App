@@ -1,0 +1,35 @@
+@import "../../../theme/mixins/flex";
+
+.navbar {
+  padding: 1.5rem 2rem;
+  @include flex($justify-content: space-between);
+  border-bottom: 2px solid #e4e4e4;
+
+  &__header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #004f9f;
+  }
+
+  &__links {
+    @include flex($gap: 1rem, $align-items: center);
+
+    a {
+      text-decoration: none;
+      color: #615d5d;
+    }
+
+    button {
+      border: none;
+      padding: 0;
+      background-color: inherit;
+      font-size: 1rem;
+      color: #615d5d;
+      cursor: pointer;
+    }
+
+    .active {
+      color: #004f9f;
+    }
+  }
+}

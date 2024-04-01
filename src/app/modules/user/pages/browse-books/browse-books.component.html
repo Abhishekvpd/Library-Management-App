@@ -1,0 +1,10 @@
+<main class="browse-page">
+    <div class="browse-page__header">
+        <h3 *ngIf="type === 'BORROW'">Browse Books</h3>
+        <h3 *ngIf="type === 'RETURN'">Your Borrowings</h3>
+        <input type="text" placeholder="search for books" *ngIf="type === 'BORROW'">
+    </div>
+    <section class="books__container">
+        <app-books-card [book]="book" [action]="type" *ngFor="let book of books"></app-books-card>
+    </section>
+</main>
