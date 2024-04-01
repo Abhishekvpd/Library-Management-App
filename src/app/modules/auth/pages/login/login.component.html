@@ -1,0 +1,37 @@
+<section class="login-page">
+    <header class="login-page__header">
+        <h4>Log In</h4>
+        <span class="login-page__header--subtext">Enter your registered mail ID with password</span>
+    </header>
+    <form class="login-page__form" [formGroup]="loginForm">
+        <div class="form-field">
+            <label>Email</label>
+            <input type="email" placeholder="Enter email" formControlName="email">
+
+            <div *ngIf="(!loginForm.controls['email'].untouched)">
+                <span class="input-error" *ngIf="loginForm.controls['email'].hasError('email')">
+                    Enter a valid email address
+                </span>
+                <span class="input-error" *ngIf="loginForm.controls['email'].hasError('required')">This is a required
+                    field</span>
+            </div>
+
+        </div>
+        <div class="form-field">
+            <label>Password</label>
+            <input type="email" placeholder="Enter password" formControlName="password">
+            <div *ngIf="(!loginForm.controls['password'].untouched)">
+                <!-- <span class="input-error" *ngIf="loginForm.controls['password'].hasError('pattern')">
+                    Password should contain atleast eight characters, one letter, one number and one special character
+                </span> -->
+                <span class="input-error" *ngIf="loginForm.controls['password'].hasError('required')">This is a required
+                    field</span>
+            </div>
+        </div>
+        <button class="button-primary" type="button" [disabled]="!loginForm.valid" (click)="loginHandler()">Log in</button>
+        <p class="register-redirection">
+            New here?
+            <span class="register-cta" (click)="registerRedirectionHandler()">Register</span>
+        </p>
+    </form>
+</section>

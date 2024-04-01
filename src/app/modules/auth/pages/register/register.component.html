@@ -1,0 +1,63 @@
+<section class="register-page">
+    <header class="register-page__header">
+        <h4>Sign Up</h4>
+        <span class="register-page__header--subtext">Register your account here</span>
+    </header>
+    <form class="register-page__form" [formGroup]="registerForm">
+        <div class="form-field">
+            <label>Name</label>
+            <input type="text" placeholder="Enter name" formControlName="name">
+
+            <div *ngIf="(!registerForm.controls['name'].untouched)">
+                <span class="input-error" *ngIf="registerForm.controls['name'].hasError('required')">This is a required
+                    field</span>
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label>Email</label>
+            <input type="email" placeholder="Enter email" formControlName="email">
+
+            <div *ngIf="(!registerForm.controls['email'].untouched)">
+                <span class="input-error" *ngIf="registerForm.controls['email'].hasError('email')">
+                    Enter a valid email address
+                </span>
+                <span class="input-error" *ngIf="registerForm.controls['email'].hasError('required')">This is a required
+                    field</span>
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label>Choose role</label>
+            <select formControlName="role">
+                <option value="" disabled>Select role</option>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+
+            <div *ngIf="(!registerForm.controls['role'].untouched)">
+                <span class="input-error" *ngIf="registerForm.controls['role'].hasError('required')">Please make a selection</span>
+            </div>
+        </div>
+
+        <div class="form-field">
+            <label>Password</label>
+            <input type="email" placeholder="Enter password" formControlName="password">
+            <div *ngIf="(!registerForm.controls['password'].untouched)">
+                <span class="input-error" *ngIf="registerForm.controls['password'].hasError('pattern')">
+                    Atleast eight characters, one letter, one number and one special character
+                </span>
+                <span class="input-error" *ngIf="registerForm.controls['password'].hasError('required')">This is a
+                    required
+                    field</span>
+            </div>
+        </div>
+
+        <button class="button-primary" type="button" [disabled]="!registerForm.valid"
+            (click)="registerHandler()">Register</button>
+        <p class="register-redirection">
+            Already have an account?
+            <span class="login-cta" (click)="loginRedirectionHandler()">Login</span>
+        </p>
+    </form>
+</section>
