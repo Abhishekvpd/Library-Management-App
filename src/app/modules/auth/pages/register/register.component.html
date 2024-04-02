@@ -36,13 +36,14 @@
             </select>
 
             <div *ngIf="(!registerForm.controls['role'].untouched)">
-                <span class="input-error" *ngIf="registerForm.controls['role'].hasError('required')">Please make a selection</span>
+                <span class="input-error" *ngIf="registerForm.controls['role'].hasError('required')">Please make a
+                    selection</span>
             </div>
         </div>
 
         <div class="form-field">
             <label>Password</label>
-            <input type="email" placeholder="Enter password" formControlName="password">
+            <input type="password" placeholder="Enter password" formControlName="password">
             <div *ngIf="(!registerForm.controls['password'].untouched)">
                 <span class="input-error" *ngIf="registerForm.controls['password'].hasError('pattern')">
                     Atleast eight characters, one letter, one number and one special character
@@ -53,7 +54,7 @@
             </div>
         </div>
 
-        <button class="button-primary" type="button" [disabled]="!registerForm.valid"
+        <button class="button-primary" type="submit" [disabled]="!registerForm.valid"
             (click)="registerHandler()">Register</button>
         <p class="register-redirection">
             Already have an account?

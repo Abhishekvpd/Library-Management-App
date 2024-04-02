@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   registerForm!: FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -27,9 +28,15 @@ export class RegisterComponent {
   }
 
   registerHandler() {
-    console.log(this.registerForm.value);
     if (this.registerForm.valid) {
-      this.router.navigate(['/login']);
+      const payload = this.registerForm.value;
+      console.log(payload);
+      this.authService.registerUser(payload).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.router.navigate(['/login']);
+        },
+      });
     }
   }
 

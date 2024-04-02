@@ -19,16 +19,13 @@
         </div>
         <div class="form-field">
             <label>Password</label>
-            <input type="email" placeholder="Enter password" formControlName="password">
+            <input type="password" placeholder="Enter password" formControlName="password">
             <div *ngIf="(!loginForm.controls['password'].untouched)">
-                <!-- <span class="input-error" *ngIf="loginForm.controls['password'].hasError('pattern')">
-                    Password should contain atleast eight characters, one letter, one number and one special character
-                </span> -->
                 <span class="input-error" *ngIf="loginForm.controls['password'].hasError('required')">This is a required
                     field</span>
             </div>
         </div>
-        <button class="button-primary" type="button" [disabled]="!loginForm.valid" (click)="loginHandler()">Log in</button>
+        <button class="button-primary" type="submit" [disabled]="!loginForm.valid" (click)="loginHandler()">Log in</button>
         <p class="register-redirection">
             New here?
             <span class="register-cta" (click)="registerRedirectionHandler()">Register</span>
