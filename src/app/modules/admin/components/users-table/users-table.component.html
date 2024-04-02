@@ -1,0 +1,13 @@
+<div class="user-page">
+    <h3>Current Users</h3>
+    <table class="table">
+        <tr>
+            <th *ngFor="let header of tableHeaders">{{header | titlecase}}</th>
+        </tr>
+        <tr *ngFor="let data of dataSource">
+            <td>{{data.name}}</td>
+            <td>{{data.email}}</td>
+            <td><button type="button" class="button-secondary">Transactions</button></td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,9 @@
+<main class="browse-page">
+    <div class="browse-page__header">
+        <h3>All Books</h3>
+        <button type="button" class="button-primary">Add Book</button>
+    </div>
+    <section class="books__container">
+        <app-books-card [book]="book" [action]="'EDIT'" *ngFor="let book of books"></app-books-card>
+    </section>
+</main>
