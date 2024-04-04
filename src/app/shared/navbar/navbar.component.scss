@@ -4,6 +4,9 @@
   padding: 1.5rem 2rem;
   @include flex($justify-content: space-between);
   border-bottom: 2px solid #e4e4e4;
+  position: sticky;
+  top: 0;
+  background-color: white;
 
   &__header {
     font-size: 1.25rem;

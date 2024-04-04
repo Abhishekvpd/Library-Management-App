@@ -39,7 +39,9 @@ export class BooksService {
     }>('/api/books/borrowings');
   }
 
-  returnBook(payload: { returnId: string; book: string }) {
-    return this.http.post('api/books/return', payload);
+  returnBook(borrowId: string, book: string) {
+    return this.http.post(`/api/books/return/${borrowId}`, {
+      book,
+    });
   }
 }

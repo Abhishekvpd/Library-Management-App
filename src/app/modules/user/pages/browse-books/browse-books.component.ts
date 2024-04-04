@@ -66,7 +66,7 @@ export class BrowseBooksComponent implements OnInit {
     this.loadDataSouce();
   }
 
-  actionHandler(event: { action: string; id: string }) {
+  actionHandler(event: { action: string; id: string; book: string }) {
     switch (event.action) {
       case 'BORROW':
         this.booksService.borrowBook(event.id).subscribe({
@@ -77,7 +77,15 @@ export class BrowseBooksComponent implements OnInit {
         });
         break;
 
-      case 'RETURN':
+      case 'RETURN': {
+        console.log(event)
+        this.booksService.returnBook(event.id, event.book).subscribe({
+          next: (res: any) => {
+            this._snackbar.openSnackBar(res.message);
+            this.loadDataSouce();
+          },
+        });
+      }
     }
   }
 }

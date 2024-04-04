@@ -37,27 +37,20 @@ export class BooksCardComponent {
       this.actionEmitter.emit({
         action: this.action,
         id: this.book._id,
-        book: this.book.bookId,
+        book: this.book._id,
       });
 
-    switch (this.action) {
-      case 'BORROW':
-        break;
+    if (this.action === 'EDIT') {
+      const dialogRef = this._dialog.open(BooksFormComponent, {
+        data: {
+          action: 'EDIT',
+          formValues: bookValues,
+        },
+      });
 
-      case 'EDIT': {
-        const dialogRef = this._dialog.open(BooksFormComponent, {
-          data: {
-            action: 'EDIT',
-            formValues: bookValues,
-          },
-        });
-
-        dialogRef
-          .afterClosed()
-          .subscribe(
-            (res) => res && this.actionEmitter.emit({ action: 'EDIT' })
-          );
-      }
+      dialogRef
+        .afterClosed()
+        .subscribe((res) => res && this.actionEmitter.emit({ action: 'EDIT' }));
     }
   }
 
