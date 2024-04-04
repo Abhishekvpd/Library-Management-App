@@ -1,0 +1,56 @@
+<section class="book-form">
+    <form class="book-form__content" [formGroup]="booksForm">
+        <h4 class="header">{{action | titlecase}} Your Book Here</h4>
+        <div class="form-field">
+            <label>Title</label>
+            <input type="text" placeholder="Enter title of the book" formControlName="title">
+            <div *ngIf="(!booksForm.controls['title'].untouched)">
+                <span class="input-error" *ngIf="booksForm.controls['title'].hasError('required')">This is a required
+                    field</span>
+            </div>
+        </div>
+        <div class="form-field">
+            <label>Author</label>
+            <input type="text" placeholder="Enter Author of the book" formControlName="author">
+            <div *ngIf="(!booksForm.controls['author'].untouched)">
+                <span class="input-error" *ngIf="booksForm.controls['author'].hasError('required')">This is a required
+                    field</span>
+            </div>
+        </div>
+        <div class="form-field">
+            <label>Genre</label>
+            <input type="text" placeholder="Enter genre of the book" formControlName="genre">
+            <div *ngIf="(!booksForm.controls['genre'].untouched)">
+                <span class="input-error" *ngIf="booksForm.controls['genre'].hasError('required')">This is a required
+                    field</span>
+            </div>
+        </div>
+        <div class="form-field">
+            <label>Description</label>
+            <textarea type="text" placeholder="Enter description of the book" formControlName="description"></textarea>
+            <div *ngIf="(!booksForm.controls['description'].untouched)">
+                <span class="input-error" *ngIf="booksForm.controls['description'].hasError('required')">This is a
+                    required
+                    field</span>
+            </div>
+        </div>
+        <div class="form-field">
+            <label>Quantity</label>
+            <input type="number" placeholder="Enter Quantity" formControlName="quantity">
+            <div *ngIf="(!booksForm.controls['quantity'].untouched)">
+                <span class="input-error" *ngIf="booksForm.controls['quantity'].hasError('required')">This is a
+                    required
+                    field</span>
+                <span class="input-error" *ngIf="booksForm.controls['quantity'].hasError('min')">Please add atleast one
+                    book</span>
+                <span class="input-error" *ngIf="booksForm.controls['quantity'].hasError('max')">Maximum of 20 books can
+                    be added</span>
+            </div>
+        </div>
+        <div class="book-form__actions">
+            <button type="submit" class="button-primary" (click)="cancelHandler()">Cancel</button>
+            <button type="submit" class="button-primary" [disabled]="!booksForm.valid"
+                (click)="submitHandler()">{{action | titlecase}} Book</button>
+        </div>
+    </form>
+</section>

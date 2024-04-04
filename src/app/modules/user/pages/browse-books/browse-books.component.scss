@@ -18,6 +18,15 @@
   }
 
   .books__container {
-    @include flex($direction: column, $gap: 1rem)
+    @include flex($direction: column, $gap: 1rem);
+
+    .paginator {
+      align-self: flex-end;
+    }
+
+    .empty-state {
+      margin-top: 5rem;
+      text-align: center;
+    }
   }
 }

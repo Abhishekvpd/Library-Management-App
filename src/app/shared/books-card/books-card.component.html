@@ -1,12 +1,24 @@
 <section class="card">
     <div class="card__header">
         <h5 class="card__title">{{book.title}}</h5>
-        <button type="button" class="button-secondary">{{action}}</button>
+        <div class="card__actions">
+            <button type="button" class="button-secondary" (click)="actionHandler(book)"
+                [disabled]="book.quantity === 0 && action !== 'EDIT'">{{action}}</button>
+            <button type="button" class="button-secondary" (click)="deleteHandler(book)"
+                *ngIf="action === 'EDIT'">DELETE</button>
+        </div>
     </div>
-    <div class="card__details">
-        <span>{{book.author}}</span>
-        <div class="seperator"></div>
-        <span>{{book.genre}}</span>
+
+    <div class="card__content" *ngIf="action !== 'RETURN'">
+        <div class="details">
+            <span>Author: {{book.author}}</span>
+            <div class="seperator"></div>
+            <span>Genre: {{book.genre}}</span>
+        </div>
+        <span class="quantity">Quantity: {{book
+            .quantity}}</span>
+        <p class="card__description">{{book.description}}</p>
     </div>
-    <p class="card__description">{{book.description}}</p>
+
+    <span *ngIf="action === 'RETURN'">{{book.borrowedOn | date:"short"}}</span>
 </section>

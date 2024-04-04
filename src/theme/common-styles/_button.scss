@@ -12,7 +12,6 @@
   }
 
   &:disabled {
-    background-color: #f0f0f0;
     background-color: #528ac2;
   }
 }
@@ -24,4 +23,12 @@
   background-color: inherit;
   font-size: 1rem;
   cursor: pointer;
+
+  &:hover {
+    color: #528ac2;
+  }
+
+  &:disabled {
+    color: #abb5c0;
+  }
 }

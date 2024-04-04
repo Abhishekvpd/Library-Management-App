@@ -9,6 +9,5 @@ export class UserComponent {
   navItems = [
     { name: 'Browse Books', link: '/user' },
     { name: 'Your Borrowings', link: 'borrowings' },
-    { name: 'Profile', link: '/profile' },
   ];
 }

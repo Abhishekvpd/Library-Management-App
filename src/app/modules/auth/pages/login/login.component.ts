@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { SnackbarService } from 'src/app/core/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,11 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private _snackbar: SnackbarService
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -28,6 +33,7 @@ export class LoginComponent implements OnInit {
           this.authService.setDataToLocalStorage('token', res.token);
           this.authService.setDataToLocalStorage('role', res.user.role);
           this.router.navigate([`/${res.user.role}`]);
+          this._snackbar.openSnackBar('You have logged in successfully', "snackbar-error");
         },
       });
     }

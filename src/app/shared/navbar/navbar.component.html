@@ -1,8 +1,14 @@
 <nav class="navbar">
-    <span class="navbar__header">Lhgeigg jwfbweofie pdf</span>
+    <span class="navbar__header">Library Management App.</span>
     <div class="navbar__links">
         <a [routerLink]="item.link" *ngFor="let item of navItems" routerLinkActive="active"
             [routerLinkActiveOptions]="{exact: true}">{{item.name}}</a>
-        <button type="button">Logout</button>
+        <a [matMenuTriggerFor]="menu">Profile</a>
+        <mat-menu #menu="matMenu" class="profile">
+            <span mat-menu-item>Name: {{user?.name}}</span>
+            <span mat-menu-item>Email: {{user?.email}}</span>
+            <span mat-menu-item>Role: {{user?.role | titlecase}}</span>
+            <button mat-menu-item type="button" (click)="signoutHandler()">Logout</button>
+        </mat-menu>
     </div>
 </nav>

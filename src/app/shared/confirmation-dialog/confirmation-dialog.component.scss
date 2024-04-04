@@ -1,0 +1,11 @@
+@import "../../../theme/common-styles/button";
+@import "../../../theme/mixins/flex";
+
+.dialog {
+    padding: 2rem;
+    @include flex($direction: column, $gap: 2rem);
+
+    &__actions {
+        @include flex($gap: 2rem, $justify-content: flex-end)
+    }
+}

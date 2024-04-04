@@ -9,6 +9,5 @@ export class AdminComponent {
   navItems = [
     { name: 'Books', link: '/admin' },
     { name: 'Users', link: 'users' },
-    { name: 'Profile', link: 'profile' },
   ];
 }

@@ -1,0 +1,13 @@
+<section class="paginator-container">
+    <label class="label">Items per page:</label>
+    <select class="select" (change)="pageSizeSelectHandler($event)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+    </select>
+    <button class="actions" (click)="paginationActionHandler('PREV')" [disabled]="pageConfig.currentPage === 1">{{'<'}}</button>
+            <span class="page-display">{{pageConfig.currentPage}} of {{pageConfig.totalPages}}</span>
+            <button class="actions" (click)="paginationActionHandler('NEXT')"
+                [disabled]="pageConfig.currentPage === pageConfig.totalPages">{{'>'}}</button>
+</section>

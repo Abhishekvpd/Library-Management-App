@@ -2,9 +2,16 @@
     <div class="browse-page__header">
         <h3 *ngIf="type === 'BORROW'">Browse Books</h3>
         <h3 *ngIf="type === 'RETURN'">Your Borrowings</h3>
-        <input type="text" placeholder="search for books" *ngIf="type === 'BORROW'">
+        <input type="text" placeholder="Search for books" *ngIf="type === 'BORROW'">
     </div>
     <section class="books__container">
-        <app-books-card [book]="book" [action]="type" *ngFor="let book of books"></app-books-card>
+        <app-books-card [book]="book" [action]="type" (actionEmitter)="actionHandler($event)"
+            *ngFor="let book of books"></app-books-card>
+        <section class="paginator">
+            <app-paginator [pageConfig]="pageConfig" (pageEvent)="pageEventHandler()"
+                *ngIf="books.length > 0 && pageConfig.totalPages > 1"></app-paginator>
+        </section>
+        <h4 class="empty-state" *ngIf="emptyState">{{type === "BORROW" ? "No books available now, please come back later" : "No borrowed books"}}</h4>
     </section>
 </main>
+<app-loader></app-loader>

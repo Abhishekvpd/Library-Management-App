@@ -1,9 +1,17 @@
 <main class="browse-page">
     <div class="browse-page__header">
         <h3>All Books</h3>
-        <button type="button" class="button-primary">Add Book</button>
+        <button type="button" class="button-primary" (click)="addBookHandler()">Add Book</button>
     </div>
     <section class="books__container">
-        <app-books-card [book]="book" [action]="'EDIT'" *ngFor="let book of books"></app-books-card>
+        <app-books-card [book]="book" [action]="'EDIT'" (actionEmitter)="actionHandler($event)"
+            *ngFor="let book of books"></app-books-card>
+
+        <section class="paginator">
+            <app-paginator [pageConfig]="pageConfig" (pageEvent)="pageEventHandler()"
+                *ngIf="books.length > 0"></app-paginator>
+        </section>
+        <h4 *ngIf="emptyState">No Books have been added!</h4>
     </section>
 </main>
+<app-loader></app-loader>

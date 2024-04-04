@@ -7,19 +7,19 @@ import { roleGuard } from './core/guards/role/role.guard';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [authGuard],
+    // canActivate: [authGuard],
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'user',
-    canActivate: [authGuard, roleGuard],
+    // canActivate: [authGuard, roleGuard],
     loadChildren: () =>
       import('./modules/user/user.module').then((m) => m.UserModule),
   },
   {
     path: 'admin',
-    canActivate: [authGuard, roleGuard],
+    // canActivate: [authGuard, roleGuard],
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },

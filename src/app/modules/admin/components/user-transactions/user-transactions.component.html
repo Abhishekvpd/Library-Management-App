@@ -1,0 +1,11 @@
+<main class="transactions-page">
+    <section class="transactions-page__details">
+        <h3>Borrowings</h3>
+        <div *ngFor="let data of data" class="transactions-page__logs">
+            <span>{{data.title}}</span>
+            <span>Borrowed on: {{data.borrowedOn | date:"short"}}</span>
+        </div>
+        <span *ngIf="data.length === 0">No Transactions Found</span>
+        <button type="button" class="button-primary" (click)="closeHandler()">Close</button>
+    </section>
+</main>

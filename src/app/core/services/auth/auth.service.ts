@@ -32,4 +32,25 @@ export class AuthService {
   loginUser(payload: { email: string; password: string }) {
     return this.http.post<Login>('/api/auth/login', payload);
   }
+
+  getUserProfile() {
+    return this.http.get<{
+      user: { name: string; email: string; role: string };
+    }>('/api/auth/profile');
+  }
+
+  getAllUsers() {
+    return this.http.get<{
+      users: {
+        email: string;
+        name: string;
+        borrowings: {
+          title: string;
+          book: string;
+          borrowedOn: string;
+          _id: string;
+        }[];
+      }[];
+    }>('/api/auth/users');
+  }
 }

@@ -7,7 +7,8 @@
         <tr *ngFor="let data of dataSource">
             <td>{{data.name}}</td>
             <td>{{data.email}}</td>
-            <td><button type="button" class="button-secondary">Transactions</button></td>
+            <td><button type="button" class="button-secondary" (click)="onClickHandler(data)">Transactions</button></td>
         </tr>
     </table>
 </div>
+<app-loader></app-loader>

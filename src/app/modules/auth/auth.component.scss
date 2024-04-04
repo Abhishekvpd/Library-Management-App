@@ -1,8 +1,7 @@
 @import "../../../theme/mixins/flex";
 
 .auth-container {
-  height: 100vh;
-  padding: 2rem;
+  padding-top: 3rem;
   @include flex($justify-content: center, $align-items: center);
 
   .auth-page {

@@ -1,0 +1,27 @@
+@import "../../../../../theme/mixins/flex";
+@import "../../../../../theme/common-styles/form";
+@import "../../../../../theme/common-styles/button";
+
+.book-form {
+  @include flex($direction: column, $gap: 2rem, $align-items: center);
+
+  &__content {
+    padding: 1rem 2rem;
+    border: 2px solid #e4e4e4;
+    border-radius: 0.5rem;
+
+    @include flex($direction: column, $gap: 1.5em);
+
+    .header {
+      text-align: center;
+      font-weight: 500;
+    }
+  }
+
+  &__actions {
+    @include flex($gap: 2rem);
+    .button-primary {
+      flex: 1;
+    }
+  }
+}
